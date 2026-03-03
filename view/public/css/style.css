@@ -1,0 +1,611 @@
+/* -----------------------------------------
+   PALETTE GLOBALE LS MOTORS
+----------------------------------------- */
+:root {
+    --noir: #050506;
+    --noir-soft: #0d0d10;
+    --anthracite: #16161a;
+    --anthracite-clair: #1f1f26;
+    --blanc: #f5f5f7;
+    --gris-clair: #cfcfd4;
+    --gris-moyen: #8f9096;
+    --doré: #c9a227;
+    --doré-foncé: #a38218;
+    --rouge-erreur: #c0392b;
+}
+
+/* -----------------------------------------
+   BODY GLOBAL
+----------------------------------------- */
+body {
+    background-color: var(--noir-soft) !important;
+    color: var(--blanc) !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Fix pour éviter le décalage horizontal */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* -----------------------------------------
+   LIENS
+----------------------------------------- */
+a {
+    color: var(--doré);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--gris-clair);
+    text-decoration: none;
+}
+
+/* -----------------------------------------
+   TITRES
+----------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--blanc);
+    font-weight: 600;
+}
+
+/* -----------------------------------------
+   OVERRIDE BOOTSTRAP UTILS (bg/text/border)
+----------------------------------------- */
+
+/* Fonds sombres */
+.bg-dark,
+.bg-black,
+.bg-body,
+.bg-secondary {
+    background-color: var(--noir-soft) !important;
+}
+
+/* Textes */
+.text-light {
+    color: var(--blanc) !important;
+}
+
+.text-secondary {
+    color: var(--gris-moyen) !important;
+}
+
+/* Bordures */
+.border,
+.border-secondary {
+    border-color: var(--doré) !important;
+}
+
+/* Tables */
+.table {
+    color: var(--blanc);
+    background-color: var(--anthracite-clair);
+}
+
+.table thead th {
+    color: var(--blanc);
+    background-color: var(--anthracite);
+    border-bottom: 2px solid var(--doré);
+}
+
+.table tbody tr {
+    border-color: var(--anthracite);
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #18181f;
+}
+
+.table tbody tr:hover {
+    background-color: #20202a;
+}
+
+/* -----------------------------------------
+   NAVBAR
+----------------------------------------- */
+.navbar {
+    background: linear-gradient(90deg, var(--noir) 0%, #121218 40%, #181820 100%);
+    border-bottom: 1px solid var(--doré);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: var(--blanc) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    color: var(--doré) !important;
+}
+
+/* -----------------------------------------
+   CARTES / BLOCS / PANNEAUX
+----------------------------------------- */
+.card {
+    background: radial-gradient(circle at top left, #262633 0, var(--anthracite) 40%, #101018 100%);
+    color: var(--blanc);
+    border: 1px solid var(--doré-foncé);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid var(--doré-foncé);
+    color: var(--blanc);
+}
+
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid var(--doré-foncé);
+}
+
+/* Encadrés/gros blocs type accueil */
+.box-gold,
+.border-gold {
+    background: linear-gradient(135deg, #191921, #13131a);
+    border: 1px solid var(--doré-foncé);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+}
+
+/* -----------------------------------------
+   FORMULAIRES
+----------------------------------------- */
+.form-control,
+.form-select {
+    background-color: #13131a;
+    border: 1px solid #3a3a48;
+    color: var(--blanc);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #15151f;
+    color: var(--blanc);
+    border-color: var(--doré);
+    box-shadow: 0 0 0 0.15rem rgba(201, 162, 39, 0.4);
+}
+
+.form-label {
+    color: var(--gris-clair);
+}
+
+/* Placeholders */
+::placeholder {
+    color: #696979 !important;
+}
+
+/* -----------------------------------------
+   BOUTONS
+----------------------------------------- */
+.btn {
+    border-radius: 0.4rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease-in-out;
+}
+
+/* Bouton principal doré */
+.btn-primary {
+    background: linear-gradient(135deg, var(--doré) 0, var(--doré-foncé) 100%);
+    border: none;
+    color: var(--noir);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e1c15a 0, var(--doré) 100%);
+    color: var(--noir);
+    transform: translateY(-1px);
+}
+
+/* Bouton secondaire "outline" doré */
+.btn-outline-primary,
+.btn-outline-warning {
+    border-color: var(--doré);
+    color: var(--doré);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-warning:hover {
+    background-color: var(--doré);
+    color: var(--noir);
+}
+
+/* Bouton danger (suppression etc.) */
+.btn-danger {
+    background-color: var(--rouge-erreur);
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #e74c3c;
+}
+
+/* -----------------------------------------
+   ALERTES / MESSAGES
+----------------------------------------- */
+.alert {
+    border-radius: 0.5rem;
+}
+
+.alert-success {
+    background-color: #14532d;
+    border-color: #22c55e;
+    color: #bbf7d0;
+}
+
+.alert-danger {
+    background-color: #450a0a;
+    border-color: #f87171;
+    color: #fecaca;
+}
+
+.alert-warning {
+    background-color: #451a03;
+    border-color: #facc15;
+    color: #fef3c7;
+}
+
+/* -----------------------------------------
+   FOOTER
+----------------------------------------- */
+footer {
+    background: linear-gradient(90deg, #050506, #101018, #050506);
+    border-top: 1px solid var(--doré);
+    color: var(--gris-clair);
+    font-size: 0.85rem;
+}
+
+/* -----------------------------------------
+   TABLES DE GESTION ADMIN
+----------------------------------------- */
+.table-actions .btn {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+/* -----------------------------------------
+   DIVERS
+----------------------------------------- */
+
+/* Séparateurs dorés */
+.hr-gold {
+    border: 0;
+    border-top: 1px solid var(--doré);
+    opacity: 0.6;
+    margin: 1.5rem 0;
+}
+
+/* Badge / labels */
+.badge-gold {
+    background-color: var(--doré);
+    color: var(--noir);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Petites ombres propres */
+.shadow-soft {
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.65);
+}
+
+
+/* Logo navbar */
+.navbar-logo-img {
+    height: 46px;
+    /* ajuste ici si tu veux plus grand/petit */
+    width: auto;
+    image-rendering: auto;
+}
+
+/* Ajuste la hauteur de la navbar */
+.navbar {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+
+
+    /* Layout: footer en bas de page */
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+    }
+}
+
+/* ---------------------------------
+   NAVBAR - Recherche (dropdown flottant)
+   - Ne doit pas agrandir la navbar
+--------------------------------- */
+.navbar, .navbar .collapse, .navbar .navbar-collapse{
+    overflow: visible !important;
+}
+
+.nav-search-wrap{
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 220px;
+}
+
+.nav-search-input{
+    height: 38px;
+}
+
+/* Dropdown flottant */
+.nav-search-dropdown{
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+
+    background: #111;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.45);
+
+    max-height: 320px;
+    overflow: auto;
+    z-index: 9999;
+    padding: 6px;
+}
+
+/* Item suggestion */
+.search-item{
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-item:hover{
+    background: rgba(255,255,255,.08);
+}
+
+
+
+/* Dropdown ouverture au survol (desktop) */
+.dropdown-hover:hover > .dropdown-menu{
+  display: block;
+}
+.dropdown-hover > .dropdown-toggle::after{
+  margin-left: .4rem;
+}
+
+/* Empêche les dropdown (Profil/Thème) de sortir de l'écran */
+.dropdown-hover{ position: relative; }
+.dropdown-hover > .dropdown-menu{
+  /* En mode hover, on neutralise un éventuel placement Popper (clic) */
+  inset: auto !important;
+  transform: none !important;
+  top: 100% !important;
+  margin-top: .5rem;
+  max-width: calc(100vw - 16px);
+}
+.dropdown-hover > .dropdown-menu.dropdown-menu-end{
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Thème clair
+   On réutilise le CSS existant basé sur les variables (palette) :
+   on remplace juste les valeurs pour basculer tout le site en clair.
+*/
+body.theme-light{
+  --noir: #ffffff;
+  --noir-soft: #f7f7fb;
+  --anthracite: #e9e9f0;
+  --anthracite-clair: #ffffff;
+  --blanc: #141414;
+  --gris-clair: #2a2a2a;
+  --gris-moyen: #5a5a5a;
+  /* doré conservé comme accent */
+}
+
+/* Ajustements ponctuels pour les zones qui avaient des couleurs codées en dur */
+body.theme-light .navbar{
+  background: linear-gradient(90deg, #ffffff 0%, #f2f2f6 40%, #ededf3 100%) !important;
+}
+body.theme-light .bg-dark,
+body.theme-light .bg-black,
+body.theme-light .bg-body,
+body.theme-light .bg-secondary{
+  background-color: var(--noir-soft) !important;
+}
+body.theme-light .table{
+  color: var(--blanc) !important;
+  background-color: #ffffff !important;
+}
+body.theme-light .table thead th{
+  background-color: #f2f2f7 !important;
+  color: var(--blanc) !important;
+}
+body.theme-light .table tbody tr:nth-child(even){
+  background-color: #f7f7fb !important;
+}
+body.theme-light .table tbody tr:hover{
+  background-color: #efeff6 !important;
+}
+body.theme-light .nav-search-dropdown{
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18) !important;
+}
+body.theme-light .search-item{ color: #111 !important; }
+body.theme-light .search-item:hover{ background: rgba(0,0,0,.06) !important; }
+
+/* Menus dropdown en clair même si bootstrap a "dropdown-menu-dark" */
+body.theme-light .dropdown-menu{
+  background: #ffffff !important;
+  color: #111 !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+}
+body.theme-light .dropdown-item{ color: #111 !important; }
+body.theme-light .dropdown-item:hover{ background: rgba(0,0,0,.06) !important; }
+
+body.theme-light footer{
+  background: #ffffff !important;
+  color: #333 !important;
+}
+
+/* Bouton thème compact */
+.theme-btn{
+  white-space: nowrap;
+}
+
+
+/* ---------------- LIGHT THEME EXTENDED
+   Ajustements visuels complets
+----------------------------------------- */
+
+/* Navbar en clair : liens sombres + toggler visible */
+body.theme-light .navbar-nav .nav-link,
+body.theme-light .navbar-brand{
+  color: #141414 !important;
+}
+body.theme-light .navbar-nav .nav-link:hover,
+body.theme-light .navbar-nav .nav-link.active{
+  color: var(--doré) !important;
+}
+body.theme-light .navbar-toggler{
+  border-color: rgba(0,0,0,.25) !important;
+}
+body.theme-light .navbar-toggler-icon{
+  filter: invert(1) grayscale(1);
+}
+
+/* Cards en clair (catégories, véhicules, profil, rdv, etc.) */
+body.theme-light .card{
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5fb 100%) !important;
+  color: #141414 !important;
+  border-color: rgba(0,0,0,.10) !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,.10) !important;
+}
+
+/* Certains écrans utilisaient "text-light" sur les cards (catégories/véhicules/profil).
+   En thème clair, on force le texte en sombre sans toucher aux boutons Bootstrap. */
+body.theme-light .card.text-light,
+body.theme-light .card.text-white{
+  color: #141414 !important;
+}
+body.theme-light .card.text-light *:not(.btn):not(.badge),
+body.theme-light .card.text-white *:not(.btn):not(.badge){
+  color: inherit !important;
+}
+body.theme-light .card-header,
+body.theme-light .card-footer{
+  background-color: rgba(0,0,0,.03) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: #141414 !important;
+}
+body.theme-light .box-gold,
+body.theme-light .border-gold{
+  background: linear-gradient(180deg, #ffffff 0%, #f7f7fb 100%) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: #141414 !important;
+}
+
+/* Formulaires en clair */
+body.theme-light .form-control,
+body.theme-light .form-select{
+  background-color: #ffffff !important;
+  color: #141414 !important;
+  border-color: rgba(0,0,0,.18) !important;
+}
+body.theme-light .form-control:focus,
+body.theme-light .form-select:focus{
+  background-color: #ffffff !important;
+  color: #141414 !important;
+  border-color: var(--doré) !important;
+  box-shadow: 0 0 0 .15rem rgba(201,162,39,.25) !important;
+}
+body.theme-light ::placeholder{
+  color: rgba(20,20,20,.55) !important;
+}
+
+/* Boutons "outline light" en clair (connexion, déconnexion, etc.) */
+body.theme-light .btn-outline-light{
+  color: #141414 !important;
+  border-color: rgba(0,0,0,.35) !important;
+}
+body.theme-light .btn-outline-light:hover{
+  background: #141414 !important;
+  color: #ffffff !important;
+  border-color: #141414 !important;
+}
+
+/* Boutons primaires/secondaires (certains étaient trop fades) */
+body.theme-light .btn-secondary{
+  background-color: #e9e9f0 !important;
+  border-color: rgba(0,0,0,.12) !important;
+  color: #141414 !important;
+}
+body.theme-light .btn-secondary:hover{
+  background-color: #dedee8 !important;
+}
+
+/* Alertes */
+body.theme-light .alert{
+  border-color: rgba(0,0,0,.12) !important;
+}
+
+/* Dropdown hover : éviter les petits "trous" qui font disparaître le menu */
+.navbar .dropdown-hover .dropdown-menu{
+  margin-top: 0 !important;
+}
+
+/* Search dropdown (autosuggest) en clair déjà géré, mais on assure le texte partout */
+body.theme-light .nav-search-input{
+  background-color: #ffffff !important;
+  color: #141414 !important;
+  border-color: rgba(0,0,0,.18) !important;
+}
+
+
+/* Tables bootstrap dark => claires quand thème clair */
+body.theme-light .table-dark{
+  --bs-table-bg: #ffffff;
+  --bs-table-color: #141414;
+  --bs-table-border-color: rgba(0,0,0,.10);
+  --bs-table-striped-bg: #f7f7fb;
+  --bs-table-striped-color: #141414;
+  --bs-table-hover-bg: #efeff6;
+  --bs-table-hover-color: #141414;
+  color: #141414 !important;
+  background-color: #ffffff !important;
+}
+/* Bootstrap applique la couleur via les cellules : on écrase proprement */
+body.theme-light .table-dark > :not(caption) > * > *{
+  background-color: transparent !important;
+  color: #141414 !important;
+  border-color: rgba(0,0,0,.10) !important;
+}
+body.theme-light .table-dark thead th{
+  background-color: #f2f2f7 !important;
+  color: #141414 !important;
+}
+body.theme-light .table-dark tbody tr:nth-child(even){
+  background-color: #f7f7fb !important;
+}
+body.theme-light .table-dark tbody tr:hover{
+  background-color: #efeff6 !important;
+}

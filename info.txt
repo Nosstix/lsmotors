@@ -1,0 +1,197 @@
+LS MOTORS - Inventaire des fonctionnalités + où c'est dans le code
+=============================================================
+
+0) Point d'entrée / Routing
+---------------------------
+- Fichier: index.php
+- Rôle:
+  - Démarre la session
+  - Charge la BDD (bdd/bdd.php)
+  - Auto-charge les models + controllers (dossiers model/* et controller/*)
+  - Traite les "actions techniques" (POST/GET) AVANT d'afficher les pages
+  - Route ensuite vers les vues (view/pages/...)
+
+- Paramètre principal: ?page=...
+  Pages publiques:
+    - accueil            -> view/pages/accueil.php
+    - categories         -> view/pages/categories.php
+    - listeVehicules     -> view/pages/listeVehicules.php
+    - contact            -> view/pages/contact.php
+  Auth:
+    - connexion          -> view/pages/login/connexion.php
+    - inscription        -> view/pages/login/inscription.php
+  Joueur (role=joueur):
+    - rdv                -> view/pages/user/rdv.php               (panier + demande RDV)
+    - rdv_client         -> view/pages/user/rdv_client.php        (statut du RDV)
+    - achats             -> view/pages/user/achats.php            (historique achats)
+  Employé/Admin:
+    - rdv_demandes       -> view/pages/user/rdv_demandes.php      (demandes à prendre)
+    - rdv_mes            -> view/pages/user/rdv_mes.php           (RDV pris par moi)
+    - rdv_historique_employe -> view/pages/user/rdv_historique_employe.php
+    - ventes_ajouter     -> view/pages/user/ventes_ajouter.php
+    - ventes_historique  -> view/pages/user/ventes_historique.php
+  Admin:
+    - admin              -> view/pages/user/admin/admin_page.php
+
+- Guards (contrôle d'accès):
+  - index.php: functions isLogged(), role(), requireRoles([...])
+
+1) Layout (header/footer) + assets
+---------------------------------
+- Header:  view/commun/header.php
+  - Navbar + menus selon rôle:
+    - Admin: badge rouge + menu ventes + lien Admin
+    - Employé: badge bleu + menu ventes
+    - Joueur: badge vert + liens Panier/RDV, Mon RDV, Mes achats
+  - Barre de recherche véhicule au centre (suggestions dropdown)
+
+- Footer:  view/commun/footer.php
+  - Inclusion JS:
+    - Bootstrap bundle
+    - /view/public/js/search.js (suggestions recherche)
+
+- CSS:
+  - Commun: view/public/css/style.css
+  - Par page (si existant): view/public/css/pages/{page}.css (chargé automatiquement par header.php)
+
+- Images:
+  - Logo: view/public/img/logo.png
+  - Véhicules: view/public/img/image_voiture/ (avec default.png)
+
+2) Authentification (connexion / inscription)
+---------------------------------------------
+- Connexion:
+  - Vue: view/pages/login/connexion.php
+  - Controller: controller/utilisateur/loginUtilisateur.php
+  - Model: model/utilisateur/utilisateurModel.php
+    - Utilisateur::getByEmail()
+
+- Inscription (joueur uniquement):
+  - Vue: view/pages/login/inscription.php
+  - Controller: controller/utilisateur/insertUtilisateur.php
+  - Model: model/utilisateur/utilisateurModel.php
+    - Utilisateur::create()
+  - Règle: le rôle créé via cette page est 'joueur' (pas admin/employe)
+
+- Déconnexion:
+  - index.php (action): page=deconnexion
+
+3) Catalogue (catégories / véhicules / recherche)
+-------------------------------------------------
+- Catégories:
+  - Vue: view/pages/categories.php
+  - Controller: controller/categorie/selectCategorie.php
+  - Model: model/categorie/categorieModel.php
+
+- Liste véhicules:
+  - Vue: view/pages/listeVehicules.php
+  - Données:
+    - Vehicules d'une catégorie via id_categorie (GET)
+    - Recherche via q (GET)
+  - Controller/Model:
+    - controller/vehicule/selectVehicule.php
+    - model/vehicule/vehiculeModel.php
+      - vehiculeSelectAll()
+      - vehiculeSelectByCategorie()
+      - vehiculeSearch()
+
+- Recherche navbar (suggestions type autocomplete):
+  - Front:
+    - Header: view/commun/header.php (input + dropdown)
+    - JS: view/public/js/search.js
+  - Back:
+    - index.php (action): page=search_suggest (retour JSON)
+    - Model: vehiculeSearch($bdd, $q, $idCategorie)
+
+4) "Prendre RDV" côté joueur (panier session + demande RDV)
+-----------------------------------------------------------
+- Bouton "Prendre RDV" sur les cards véhicules:
+  - Vue: view/pages/listeVehicules.php
+  - Action POST: index.php?page=panier_add
+
+- Panier (stockage en session):
+  - Model: model/panier/panierModel.php
+    - panierAdd(), panierSetQty(), panierRemove(), panierClear(), panierGet()
+  - Controller: controller/panier/panierController.php
+    - panierHandleAdd(), panierHandleUpdate(), panierHandleRemove(), panierHandleClear()
+  - Actions gérées dans index.php:
+    - page=panier_add, panier_update, panier_remove, panier_clear
+
+- Page panier / demande RDV:
+  - Vue: view/pages/user/rdv.php
+  - Soumission RDV:
+    - POST -> index.php?page=rdv_submit
+    - Controller: controller/rdv/rdvController.php (rdvSubmitFromPanier)
+    - Model: model/rdv/rdvModel.php (création RDV + lignes)
+
+- Suivi RDV côté joueur:
+  - Vue: view/pages/user/rdv_client.php (statut + employé assigné si pris)
+  - Historique achats:
+    - Vue: view/pages/user/achats.php
+    - Model: model/rdv/rdvModel.php (requêtes historique)
+
+5) Gestion RDV côté employé/admin (workflow "demandes -> mes RDV -> historique")
+-------------------------------------------------------------------------------
+- Demandes (liste globale non prise):
+  - Vue: view/pages/user/rdv_demandes.php
+  - Action: "Prendre" un RDV -> POST index.php?page=rdv_take
+  - Controller: controller/rdv/rdvController.php
+  - Model: model/rdv/rdvModel.php (assignation employé)
+
+- RDV en cours (assignés à l'employé connecté):
+  - Vue: view/pages/user/rdv_mes.php
+  - Actions:
+    - Remettre en file: POST index.php?page=rdv_release
+    - Valider: POST index.php?page=rdv_validate
+    - Annuler/Supprimer: POST index.php?page=rdv_cancel
+  - Controller: controller/rdv/rdvController.php
+  - Model: model/rdv/rdvModel.php
+
+- Historique RDV employé:
+  - Vue: view/pages/user/rdv_historique_employe.php
+  - Model: model/rdv/rdvModel.php
+
+6) Ventes (employé/admin)
+-------------------------
+- Ajouter une vente:
+  - Vue: view/pages/user/ventes_ajouter.php
+  - Controller: controller/vente/insertVente.php
+  - Model: model/vente/venteModel.php
+  - Vérification pseudo: utilise le DiscordPseudo des utilisateurs
+    - Model: model/utilisateur/utilisateurModel.php -> discordPseudoExists() / getAllDiscordPseudos()
+
+- Historique ventes:
+  - Vue: view/pages/user/ventes_historique.php
+  - Controller: controller/vente/selectVente.php
+  - Model: model/vente/venteModel.php
+
+7) Admin (page unique)
+----------------------
+- Vue: view/pages/user/admin/admin_page.php
+- But: informer que l'administration avancée passe par l'app Java + lien Github.
+- Accès: role=admin seulement (index.php requireRoles(['admin']))
+
+8) BDD (structure et connexion)
+-------------------------------
+- Connexion PDO:
+  - bdd/bdd.php
+
+- Script SQL (selon ton repo):
+  - BDD/script.sql (si présent dans ton projet)
+
+- Tables principales utilisées par l'app:
+  - utilisateur (Role: admin/employe/joueur + DiscordPseudo)
+  - categorie
+  - marque
+  - vehicule
+  - vente
+  - config (marge globale)
+  - rdv + rdv_ligne (si présents dans ton script actuel)
+
+Note: Ce fichier est un "plan" de lecture du projet. Il ne remplace pas le code (malheureusement).
+
+
+=== NOUVEAU (v5+) ===
+- Profil client (dropdown "Profil" dans la navbar) : header.php -> menu Profil, page view/pages/user/profil.php (route index.php?page=profil)
+  Stats profil : controller/rdv/rdvController.php -> rdvGetClientStats()
+- Thème (dropdown "Thème" dans la navbar) : header.php, JS view/public/js/theme.js, CSS style.css (body.theme-light)

@@ -1,0 +1,82 @@
+/*
+  CSS spécifique à la page ventes_historique.
+  (Les styles globaux restent dans style.css)
+*/
+
+}/* -----------------------------------------
+   NOUVEAUTE
+----------------------------------------- */
+
+
+/* Légende couleurs prix (admin ventes employés) */
+.price-legend{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.price-legend .legend-item{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.price-legend .legend-swatch{
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+/* Bloc légende couleurs prix - Admin ventes employés */
+.price-legend-box{
+    background-color: #111;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 10px 14px;
+    max-width: 420px;
+}
+
+.price-legend-box .legend-line{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.price-legend-box .legend-line:last-child{
+    margin-bottom: 0;
+}
+
+.price-legend-box .legend-square{
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* Couleurs */
+.legend-success .legend-square{
+    background-color: #28a745;
+}
+.legend-warning .legend-square{
+    background-color: #ffc107;
+}
+.legend-danger .legend-square{
+    background-color: #dc3545;
+}
+.legend-primary .legend-square{
+    background-color: #0d6efd;
+}/* Admin Finances - colonnes inputs + ligne détails */
+.col-input{
+    width: 160px;
+}
+
+.finance-details-row td{
+    background-color: rgba(255,255,255,0.02);
+    border-top: 0;
+}
