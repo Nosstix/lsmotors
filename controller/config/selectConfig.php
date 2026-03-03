@@ -1,5 +1,5 @@
 <?php
-//  controller config qui donne la marge
+//  controller config qui donne la marge et selectionne une config
 
 function configGetMarge(PDO $bdd): float
 {
