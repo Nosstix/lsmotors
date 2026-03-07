@@ -1,7 +1,11 @@
+
+USE ls_motors;
+-- =========================
+-- =========================
+
 -- =========================
 -- INSERT DE BASE
 -- =========================
-
 -- Catégories de véhicules (LS MOTORS)
 INSERT INTO categorie (Libelle) VALUES
 ('Sports'),
