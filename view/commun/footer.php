@@ -3,7 +3,7 @@
 <footer class="bg-black text-secondary text-center py-3 border-top border-secondary">
     <small>
         LS MOTORS &copy; <?php echo date('Y'); ?> – Concession District RP FA<br>
-        Site conçu et développé par <strong>Nosstix_15</strong>.
+        Site conçu et développé par l'équipe <strong>NYTGH</strong>.
     </small>
 </footer>
 <script src="/lsMotors/view/public/js/search.js"></script>

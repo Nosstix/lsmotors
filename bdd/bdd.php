@@ -1,7 +1,7 @@
 <?php
 
     try{
-        $users = "root";
+        $users = "adminphp";
         $pass = "";
         $bdd = new PDO('mysql:host=localhost;dbname=ls_motors', $users, $pass);
 
