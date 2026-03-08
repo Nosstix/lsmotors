@@ -8,12 +8,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="/lsMotors/view/public/css/style.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>view/public/css/style.css">
     <?php
     if (isset($page)) {
         $cssPath = __DIR__ . "/../public/css/pages/{$page}.css";
         if (file_exists($cssPath)) {
-            echo '<link rel="stylesheet" href="/lsMotors/view/public/css/pages/' . htmlspecialchars($page) . '.css">';
+            echo '<link rel="stylesheet" href="' . htmlspecialchars(BASE_URL) . 'view/public/css/pages/' . htmlspecialchars($page) . '.css">';
         }
     }
     ?>
@@ -26,9 +26,9 @@
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.php?page=accueil">
                 <img
                     id="siteLogo"
-                    src="/lsMotors/view/public/img/logo.png"
-                    data-logo-dark="/lsMotors/view/public/img/logo.png"
-                    data-logo-light="/lsMotors/view/public/img/logoWhite.png"
+                    src="<?= BASE_URL ?>view/public/img/logo.png"
+                    data-logo-dark="<?= BASE_URL ?>view/public/img/logo.png"
+                    data-logo-light="<?= BASE_URL ?>view/public/img/logoWhite.png"
                     alt="LS MOTORS"
                     style="height:32px;">
                 <span class="fw-bold">LS MOTORS</span>

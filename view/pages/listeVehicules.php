@@ -30,7 +30,7 @@ if ($q !== '') {
     $vehicules = ($idCategorie > 0) ? vehiculeSelectByCategorie($bdd, $idCategorie) : vehiculeSelectAll($bdd);
 }
 
-$imgBase = "/lsMotors/view/public/img/image_voiture/";
+$imgBase = BASE_URL . "view/public/img/image_vehicule/";
 $imgDefault = $imgBase . "default.png";
 
 $role = $_SESSION['utilisateur']['Role'] ?? null;
