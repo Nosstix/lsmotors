@@ -6,10 +6,10 @@
         Site conçu et développé par l'équipe <strong>NYGHT</strong>.
     </small>
 </footer>
-<script src="view/public/js/search.js"></script>
-<script src="view/public/js/theme.js"></script>
+<script src="<?= BASE_URL ?>view/public/js/search.js"></script>
+<script src="<?= BASE_URL ?>view/public/js/theme.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="view/public/js/dropdownHover.js"></script>
+<script src="<?= BASE_URL ?>view/public/js/dropdownHover.js"></script>
 </body>
 
 </html>
