@@ -20,9 +20,11 @@ sudo mysql < update_images.sql
 Dans `bdd/bdd.php`, vérifier les identifiants MySQL et s'assurer que l'utilisateur a les droits sur la base :
 
 ```sql
-GRANT ALL PRIVILEGES ON ls_motors.* TO 'adminphp'@'localhost';
+GRANT ALL PRIVILEGES ON ls_motors.* TO 'votre_user_mysql'@'localhost' IDENTIFIED BY 'mdp_user_mysql';
 FLUSH PRIVILEGES;
-```
+GRANT ALL PRIVILEGES ON ls_motors.* TO 'votre_user_mysql'@'localhost';
+FLUSH PRIVILEGES;
+``` 
 
 ### 3. BASE_URL
 
