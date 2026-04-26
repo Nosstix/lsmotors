@@ -56,7 +56,7 @@ Le code générait le nom du fichier image automatiquement depuis le `NomModele`
 La colonne `Image` de la table `vehicule` a été remplie avec le nom exact du fichier image via le fichier `update_images.sql` :
 
 ```bash
-sudo mysql ls_motors < update_images.sql (importer le fichier)
+sudo mysql ls_motors < update_images.sql (importer le fichier comme dit plus haut)
 ```
 
 ### Correspondances particulières à noter

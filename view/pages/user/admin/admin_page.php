@@ -16,7 +16,7 @@ if (!isset($_SESSION['utilisateur']) || ($_SESSION['utilisateur']['Role'] ?? '')
                 Télécharge-la ici :
             </p>
 
-            <a class="admin-download-btn" href="https://github.com/Nosstix/PPE-LOURD.git" target="_blank" rel="noopener">
+            <a class="admin-download-btn" href="https://github.com/davycx10/lsmotor_client_lourd" target="_blank" rel="noopener">
                 Télécharger l’application Java (GitHub)
             </a>
 
