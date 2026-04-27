@@ -28,7 +28,7 @@
 
         <div class="border border-secondary rounded-3 p-3 text-center">
             <p class="mb-1">
-                <img src=" <?= BASE_URL ?>view/public/img/emplacement.png" alt="Emplacement" class="img-fluid">
+                <img src="<?= BASE_URL ?>view/public/img/emplacement.png" alt="Emplacement" class="img-fluid">
             </p>
         </div>
 
