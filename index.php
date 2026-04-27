@@ -1,5 +1,7 @@
 <?php
-define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']) . '/');
+$scriptPath = dirname($_SERVER['SCRIPT_NAME']);
+// rtrim enlève les slashs de fin s'il y en a, puis on ajoute un seul slash propre
+define('BASE_URL', rtrim($scriptPath, '/\\') . '/');
 session_start();
 
 /* ---------------------------------
