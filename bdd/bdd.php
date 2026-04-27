@@ -1,9 +1,8 @@
 <?php
+    include_once "config.php";
 
     try{
-        $users = "adminphp";
-        $pass = "";
-        $bdd = new PDO('mysql:host=localhost;dbname=ls_motors', $users, $pass);
+        $bdd = new PDO('mysql:host=' . $host . ';dbname=' . $db_name, $users, $pass);
 
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

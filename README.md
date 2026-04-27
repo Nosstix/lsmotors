@@ -13,6 +13,10 @@ Importer les  fichiers SQL dans l'ordre :
 sudo mysql < script.sql
 sudo mysql < insert.sql
 sudo mysql < update_images.sql
+ou
+sudo mariadb < script.sql
+sudo mariadb < insert.sql
+sudo mariadb < update_images.sql
 ```
 
 ### 2. Connexion BDD
