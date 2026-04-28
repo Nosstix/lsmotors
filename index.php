@@ -11,6 +11,8 @@ $cleanPath = rtrim($cleanPath, '/');
 // on definit la constante
 // define('BASE_URL', $cleanPath . '/');
 define('BASE_URL', $cleanPath === '' ? '/' : $cleanPath . '/');
+var_dump(BASE_URL);
+die("Debug: BASE_URL defined as " . BASE_URL);
 session_start();
 
 /* ---------------------------------
