@@ -1,7 +1,15 @@
 <?php
-$scriptPath = dirname($_SERVER['SCRIPT_NAME']);
-// rtrim enlève les slashs de fin s'il y en a, puis on ajoute un seul slash propre
-define('BASE_URL', rtrim($scriptPath, '/\\') . '/');
+// on recupère le chemin brut
+$rawPath = dirname($_SERVER['SCRIPT_NAME']);
+
+// on remplace les antslashes(windows) par des slashs normaux(Linux)
+$cleanPath = str_replace('\\', '/', $rawPath);
+
+// On enlève tout slash eventuel à la fin pour repartir d'une base propre
+$cleanPath = rtrim($cleanPath, '/');
+
+// on definit la constante
+define('BASE_URL', $cleanPath . '/');
 session_start();
 
 /* ---------------------------------
