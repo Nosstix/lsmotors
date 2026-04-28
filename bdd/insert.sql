@@ -220,8 +220,6 @@ INSERT INTO utilisateur (Nom, Prenom, Email, Passwrd, Role, DiscordPseudo) VALUE
 ('Lopes', 'Tiago', 'employe50@lsmotors.local', 'employe123', 'employe', 'TiagoConcess');
 
 
-USE ls_motors;
-
 -- =========================
 -- INSERT VENTES (50)
 -- =========================
