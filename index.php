@@ -9,7 +9,8 @@ $cleanPath = str_replace('\\', '/', $rawPath);
 $cleanPath = rtrim($cleanPath, '/');
 
 // on definit la constante
-define('BASE_URL', $cleanPath . '/');
+// define('BASE_URL', $cleanPath . '/');
+define('BASE_URL', $cleanPath === '' ? '/' : $cleanPath . '/');
 session_start();
 
 /* ---------------------------------
