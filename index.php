@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 // on recupère le chemin brut
 $rawPath = dirname($_SERVER['SCRIPT_NAME']);
 
