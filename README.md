@@ -3,7 +3,7 @@
 
 ---
 
-## Installationfe
+## Installation
 
 ### 1. Base de données
 
