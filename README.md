@@ -17,6 +17,21 @@ ou
 sudo mariadb < script.sql
 sudo mariadb < insert.sql
 sudo mariadb < update_images.sql
+
+ou pour ignorer la vérification des FOREIGN_KEY
+sudo mysql --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;" < script.sql
+sudo mysql --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;" < insert.sql
+sudo mysql --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;" < update_images.sql
+
+sudo mariadb --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;" < script.sql
+sudo mariadb --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;" < insert.sql
+sudo mariadb --init-command="SET SESSION FOREIGN_KEY_CHECKS=0;" < update_images.sql
+
+si vous utilisez une image docker
+(echo "SET FOREIGN_KEY_CHECKS=0;"; cat script.sql) | docker exec -i $(docker-compose ps -q db) mariadb -u admin -padmin123 ls_motors
+(echo "SET FOREIGN_KEY_CHECKS=0;"; cat insert.sql) | docker exec -i $(docker-compose ps -q db) mariadb -u admin -padmin123 ls_motors
+(echo "SET FOREIGN_KEY_CHECKS=0;"; cat update_images.sql) | docker exec -i $(docker-compose ps -q db) mariadb -u admin -padmin123 ls_motors
+
 ```
 
 ### 2. Connexion BDD
