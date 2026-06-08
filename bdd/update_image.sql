@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS ls_motors;
-CREATE DATABASE ls_motors;
 USE ls_motors;
 
 -- Sports

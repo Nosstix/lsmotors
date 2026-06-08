@@ -1,5 +1,3 @@
-DROP DATABASE IF EXISTS ls_motors;
-CREATE DATABASE ls_motors;
 USE ls_motors;
 -- =========================
 -- =========================
@@ -7,14 +5,13 @@ USE ls_motors;
 -- =========================
 -- INSERT DE BASE
 -- Le TRUNCATE vide proprement les tables. Comme ça, quand le script arrive aux INSERT INTO marque, il n'y a plus de doublons, et tes SELECT à la ligne 821 ne renverront plus qu'une seule ligne.
-  
 -- =========================
 
 SET FOREIGN_KEY_CHECKS = 0;
-TRUNCATE TABLE vente;
-TRUNCATE TABLE vehicule;
-TRUNCATE TABLE marque;
-TRUNCATE TABLE categorie;
+DELETE FROM vente;
+DELETE FROM vehicule;
+DELETE FROM marque;
+DELETE FROM categorie;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- Catégories de véhicules (LS MOTORS)

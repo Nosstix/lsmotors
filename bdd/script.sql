@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS lsmotors;
+DROP DATABASE IF EXISTS ls_motors;
 CREATE DATABASE IF NOT EXISTS ls_motors;
 USE ls_motors;
 
