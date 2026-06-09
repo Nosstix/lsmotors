@@ -143,9 +143,18 @@ class Utilisateur
         if ($nouvellesTentatives >= 3) {
             $dateBlocage = (new DateTime())->modify('+15 seconds')->format('Y-m-d H:i:s');
 
-            $req = $this->bdd->prepare("UPDATE utilisateur SET tentatives_echouees = 3, verrouille_jusqua = :date_fin WHERE ID = :id");
-            $req->execute([':tentatives' => $nouvellesTentatives, ':id' => $id]);
-        
+                $req = $this->bdd->prepare("
+                    UPDATE utilisateur
+                    SET tentatives_echouees = 3,
+                        verrouille_jusqua = :date_fin
+                    WHERE ID = :id
+                ");
+
+                $req->execute([
+                    ':date_fin' => $dateBlocage,
+                    ':id' => $id
+                ]);
+                        
         } else {
             $req = $this->bdd->prepare("UPDATE utilisateur SET tentatives_echouees = :tentatives WHERE ID = :id");
             $req->execute([':tentatives' => $nouvellesTentatives, ':id' => $id]);

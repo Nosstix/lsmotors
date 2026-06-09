@@ -216,13 +216,13 @@ Note: Ce fichier est un "plan" de lecture du projet. Il ne remplace pas le code 
 
 | Nom     | Prénom | Pseudo Discord | Email                                                                       | Mot de passe (12 caractères) |
 | ------- | ------ | -------------- | --------------------------------------------------------------------------- | ---------------------------- |
-| Martin  | Lucas  | Luko#4821      | [lucas.martin.test01@example.com](mailto:lucas.martin.test01@example.com)   | K7mP9xQ2vL4a                 |
-| Bernard | Emma   | Emzzy#7314     | [emma.bernard.test02@example.com](mailto:emma.bernard.test02@example.com)   | T8nR5wY1cJ6k                 |
-| Dubois  | Nathan | NateFox#2048   | [nathan.dubois.test03@example.com](mailto:nathan.dubois.test03@example.com) | P3vL8mQ7zX2d                 |
-| Thomas  | Chloé  | ChloeBee#6652  | [chloe.thomas.test04@example.com](mailto:chloe.thomas.test04@example.com)   | H9kW4tN6rY1p                 |
-| Robert  | Hugo   | HugoX#1589     | [hugo.robert.test05@example.com](mailto:hugo.robert.test05@example.com)     | M2qV7jK8sD5c                 |
-| Richard | Léa    | LeaNova#4491   | [lea.richard.test06@example.com](mailto:lea.richard.test06@example.com)     | B6xP1nT9wR3m                 |
-| Petit   | Jules  | JujuDev#8275   | [jules.petit.test07@example.com](mailto:jules.petit.test07@example.com)     | F4zK8vM2qL7a                 |
-| Durand  | Sarah  | SarahSky#3902  | [sarah.durand.test08@example.com](mailto:sarah.durand.test08@example.com)   | N7rC3xP5jT8w                 |
-| Leroy   | Tom    | TomByte#5716   | [tom.leroy.test09@example.com](mailto:tom.leroy.test09@example.com)         | Q1mV9kD4zL6p                 |
-| Moreau  | Inès   | InesMoon#2483  | [ines.moreau.test10@example.com](mailto:ines.moreau.test10@example.com)     | W8tN2qR7cK5x                 |
+| Martin  | Lucas  | Luko#4821      | [lucas.martin.test01@fivem.com](mailto:lucas.martin.test01@example.com)   | K7mP9xQ2vL4a                 |
+| Bernard | Emma   | Emzzy#7314     | [emma.bernard.test02@fivem.com](mailto:emma.bernard.test02@example.com)   | T8nR5wY1cJ6k                 |
+| Dubois  | Nathan | NateFox#2048   | [nathan.dubois.@fivem.com](mailto:nathan.dubois.test03@example.com) | P3vL8mQ7zX2d                 |
+| Thomas  | Chloé  | ChloeBee#6652  | [chloe.thomas.test04@fivem.com](mailto:chloe.thomas.test04@example.com)   | H9kW4tN6rY1p                 |
+| Robert  | Hugo   | HugoX#1589     | [hugo.robert.test05@fivem.com](mailto:hugo.robert.test05@example.com)     | M2qV7jK8sD5c                 |
+| Richard | Léa    | LeaNova#4491   | [lea.richard.test06@fivem.com](mailto:lea.richard.test06@example.com)     | B6xP1nT9wR3m                 |
+| Petit   | Jules  | JujuDev#8275   | [jules.petit.test07@fivem.com](mailto:jules.petit.test07@fivem.com)     | F4zK8vM2qL7a                 |
+| Durand  | Sarah  | SarahSky#3902  | [sarah.durand.test08@fivem.com](mailto:sarah.durand.test08@fivem.com)   | N7rC3xP5jT8w                 |
+| Leroy   | Tom    | TomByte#5716   | [tom.leroy.test09@fivem.com](mailto:tom.leroy.test09@fivem.com)         | Q1mV9kD4zL6p                 |
+| Moreau  | Inès   | InesMoon#2483  | [ines.moreau.test1@fivem.com](mailto:ines.moreau.test10@fivem.com)     | W8tN2qR7cK5x                 |

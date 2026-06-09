@@ -35,6 +35,8 @@ function utilisateurLogin(PDO $bdd, string $email, string $password): ?array
             $nouveauHash = password_hash($password, PASSWORD_ARGON2ID);
 
             $req = $bdd->prepare("UPDATE utilisateur SET Passwrd = :hash WHERE ID = :id");
+            var_dump($nouveauHash);
+            var_dump($user['ID']);
             $req->execute([
                 ':hash' => $nouveauHash,
                 ':id' => (int)$user['ID']
