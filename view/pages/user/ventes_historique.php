@@ -85,7 +85,7 @@ $resume = venteResumeParSemaineEmploye($bdd, $idEmploye);
                         <td><?php echo (int) $v['ID']; ?></td>
                         <td><?php echo htmlspecialchars($v['DateVente']); ?></td>
                         <td><?php echo htmlspecialchars($v['Marque'] . ' ' . $v['NomModele']); ?></td>
-                        <td><?php echo htmlspecialchars($v['Immatriculation']); ?></td>
+                        <td><?php echo htmlspecialchars($v['Immatriculation'] ?? ''); ?></td>
                         <td><?php echo htmlspecialchars($v['NomClient']); ?></td>
 
                         <td class="<?php echo $classeCouleur; ?> fw-bold">
