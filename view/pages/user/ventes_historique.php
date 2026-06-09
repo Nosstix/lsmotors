@@ -74,6 +74,7 @@ $resume = venteResumeParSemaineEmploye($bdd, $idEmploye);
                     <th>ID</th>
                     <th>Date de vente</th>
                     <th>Véhicule</th>
+                    <th>Immatriculation</th>
                     <th>Client</th>
                     <th>Prix de vente</th>
                 </tr>
@@ -84,6 +85,7 @@ $resume = venteResumeParSemaineEmploye($bdd, $idEmploye);
                         <td><?php echo (int) $v['ID']; ?></td>
                         <td><?php echo htmlspecialchars($v['DateVente']); ?></td>
                         <td><?php echo htmlspecialchars($v['Marque'] . ' ' . $v['NomModele']); ?></td>
+                        <td><?php echo htmlspecialchars($v['Immatriculation']); ?></td>
                         <td><?php echo htmlspecialchars($v['NomClient']); ?></td>
 
                         <td class="<?php echo $classeCouleur; ?> fw-bold">

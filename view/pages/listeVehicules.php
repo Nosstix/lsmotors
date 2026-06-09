@@ -85,6 +85,11 @@ $isLogged = isset($_SESSION['utilisateur']);
                 </h5>
 
                 <p class="card-text mb-2">
+                    Immatriculation : <?php echo htmlspecialchars($v['Immatriculation']); ?>
+                </p>
+
+
+                <p class="card-text mb-2">
                     Prix catalogue : <?php echo number_format((float)$v['PrixCatalogue'], 0, ',', ' '); ?> $
                 </p>
 
