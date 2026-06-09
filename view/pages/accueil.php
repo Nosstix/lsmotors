@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6">
-        <h1 class="mb-4">LS MOTORS – Votre nouvelle concession RP</h1>
+        <h1 class="mb-4">LS MOTORS9165 – Votre nouvelle concession RP</h1>
         <p class="lead">
             Le concessionnaire officiel de Los Santos vient d’ouvrir !
             LS Motors vous propose un large choix de véhicules neufs et d’occasion pour tous les styles et tous les
