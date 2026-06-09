@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnInscription'])) {
                     'Prenom' => $prenom,
                     'DiscordPseudo' => $discord,
                     'Email' => $email,
-                    'Passwrd' => $pass1
+                    'Passwrd' => password_hash($pass1, PASSWORD_ARGON2ID)
                 ]);
                 $success = "Votre compte a été créé avec succès !";
             }
