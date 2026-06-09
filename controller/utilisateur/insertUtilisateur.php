@@ -49,7 +49,7 @@ function validerMotDePasseRegex(string $password): array
     if (!preg_match('/[0-9]/', $password)) {
         $erreurs[] = "Le mot de passe doit contenir au moins un chiffre.";
     }
-    if (!preg_match('/[@$!%*?&]/', $password)) {
+    if (!preg_match('/[#@$!%*?&]/', $password)) {
         $erreurs[] = "Le mot de passe doit contenir au moins un caractère spécial (@$!%*?&).";
     }
     return $erreurs;
