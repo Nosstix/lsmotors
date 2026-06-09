@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $dateVenteRaw = $_POST['dateVente'] ?? '';
     $dateVente = $dateVenteRaw ? str_replace('T', ' ', $dateVenteRaw) . ':00' : date('Y-m-d H:i:s');
 
-    if ($idVehicule <= 0 || $nomClient === '' || $prixVente <= 0|| $immatriculation === '') {
+    if ($idVehicule <= 0 || $nomClient === '' || $prixVente <= 0) {
         $erreur = "Veuillez remplir correctement tous les champs.";
     } else {
         // Controller: vérifie pseudo discord existant + crée la vente
