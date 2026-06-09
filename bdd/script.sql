@@ -5,9 +5,6 @@ USE ls_motors;
 -- =========================
 -- TABLE UTILISATEUR
 -- =========================
-ALTER TABLE utilisateur
-ADD COLUMN tentatives_echouees INT NOT NULL DEFAULT 0,
-ADD COLUMN verrouille_jusqua DATETIME DEFAULT NULL;
 CREATE TABLE utilisateur (
     ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nom VARCHAR(50) NOT NULL,
@@ -17,7 +14,9 @@ CREATE TABLE utilisateur (
     Role ENUM('admin','employe','joueur') NOT NULL DEFAULT 'joueur',
     DiscordPseudo VARCHAR(100) NULL,
 
-    DateInscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    DateInscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    verrouille_jusqua DATETIME DEFAULT NULL,
+    tentatives_echouees INT NOT NULL DEFAULT 0
 );
 
 -- =========================
