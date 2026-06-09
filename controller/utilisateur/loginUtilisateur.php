@@ -9,25 +9,48 @@ function utilisateurLogin(PDO $bdd, string $email, string $password): ?array
     $user = $model->getByEmail($email);
 
     if (!$user) {
-        return null;
+        throw new Exception("Aucun utilisateur trouvé.");
     }
 
-    $hash = $user['Passwrd'];
+    if (!empty($user['verrouille_jusqua'])){
+        $heureActuelle = new DateTime();
+        $heureDeblocage = new DateTime($user['verrouille_jusqua']);
 
-    // Deux modes :
-    // 1) Mot de passe hashé (password_hash)
-    // 2) Mot de passe en clair (comme ton admin "admin123" actuel)
+        if ($heureActuelle < $heureDeblocage){
+            $interval = $heureActuelle->diff($heureDeblocage);
+            throw new Exception("Compte verrouillé. Réessayez dans " . $interval->format('% %s secondes') . ".");
+        } else {
+            $model->reinitialiserTentatives((int)$user['ID']);
+            $user['tentatives_echouees'] = 0;
+        }
+    }
+    $hash = $user['Passwrd'];
     $ok = false;
 
-    if (password_verify($password, $hash)) {
-        $ok = true;
-    } elseif ($password === $hash) {
+    if (password_verify($password, $hash)){
         $ok = true;
     }
+    if ($ok){
+        if (password_needs_rehash($hash, PASSWORD_ARGON2ID) || $password === $hash){
+            $nouveauHash = password_hash($password, PASSWORD_ARGON2ID);
 
-    if ($ok) {
+            $req = $bdd->prepare("UPDATE utilisateur SET Passwrd = :hash WHERE ID = :id");
+            $req->execute([
+                ':hash' => $nouveauHash,
+                ':id' => (int)$user['ID']
+            ]);
+        }
+        $model->reinitialiserTentatives((int)$user['ID']);
         return $user;
+    } else {
+        $tentativesActuelle = (int)($user['tentatives_echouees'] ?? 0);
+        $model->gererEchecConnexion((int)$user['ID'], $tentativesActuelle);
+        $tentativesRestantes = 2 - $tentativesActuelle;
+        if ($tentativesRestantes <= 0){
+            throw new Exception("Mot de passe incorrect. Compte verrouillé pour 15 secondes.");
+        } else {
+            throw new Exception("Mot de passe incorrect. Il vous reste " . $tentativesRestantes . " tentative(s).");
+        }
     }
 
-    return null;
 }
