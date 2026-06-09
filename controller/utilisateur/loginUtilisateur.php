@@ -43,14 +43,25 @@ function utilisateurLogin(PDO $bdd, string $email, string $password): ?array
         $model->reinitialiserTentatives((int)$user['ID']);
         return $user;
     } else {
-        $tentativesActuelle = (int)($user['tentatives_echouees'] ?? 0);
-        $model->gererEchecConnexion((int)$user['ID'], $tentativesActuelle);
-        $tentativesRestantes = 2 - $tentativesActuelle;
-        if ($tentativesRestantes <= 0){
+        $tentatives = 0;
+        if (isset($user['tentatives_echouees'])){
+            $tentatives = (int)$user['tentatives_echouees'];
+        }
+        $tentatives++;
+        $model->gererEchecConnexion((int)$user['ID'], $tentatives);
+        if ($tentatives >= 3){
             throw new Exception("Mot de passe incorrect. Compte verrouillé pour 15 secondes.");
         } else {
-            throw new Exception("Mot de passe incorrect. Il vous reste " . $tentativesRestantes . " tentative(s).");
+            throw new Exception("Mot de passe incorrect. Il vous reste " . (3 - $tentatives) . " tentative(s).");
         }
+        // $tentativesActuelle = (int)($user['tentatives_echouees'] ?? 0);
+        // $model->gererEchecConnexion((int)$user['ID'], $tentativesActuelle);
+        // $tentativesRestantes = 2 - ($tentativesActuelle + 1);
+        // if ($tentativesRestantes <= 0){
+        //     throw new Exception("Mot de passe incorrect. Compte verrouillé pour 15 secondes.");
+        // } else {
+        //     throw new Exception("Mot de passe incorrect. Il vous reste " . $tentativesRestantes . " tentative(s).");
+        // }
     }
 
 }
