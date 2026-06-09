@@ -84,9 +84,11 @@ $isLogged = isset($_SESSION['utilisateur']);
                     <?php echo htmlspecialchars(($v['Marque'] ?? '') . ' ' . $v['NomModele']); ?>
                 </h5>
 
+                <?php if ($_SESSION['utilisateur']['Role'] === 'admin'): ?>
                 <p class="card-text mb-2">
                     Immatriculation : <?php echo htmlspecialchars($v['Immatriculation']); ?>
                 </p>
+                <?php endif; ?>
 
 
                 <p class="card-text mb-2">
