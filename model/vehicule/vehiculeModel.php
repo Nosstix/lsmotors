@@ -101,9 +101,9 @@ class Vehicule {
     public function create($data){
         $req = $this->bdd->prepare("
             INSERT INTO vehicule 
-                (NomModele, ID_Marque, ID_Categorie, PrixCatalogue, Description, Image, Actif)
+                (NomModele, ID_Marque, ID_Categorie, PrixCatalogue, Description, Image, Actif, Immatriculation)
             VALUES 
-                (:NomModele, :ID_Marque, :ID_Categorie, :PrixCatalogue, :Description, :Image, :Actif)
+                (:NomModele, :ID_Marque, :ID_Categorie, :PrixCatalogue, :Description, :Image, :Actif, :Immatriculation)
         ");
 
         $req->bindParam(':NomModele', $data['NomModele'], PDO::PARAM_STR);
@@ -113,6 +113,7 @@ class Vehicule {
         $req->bindParam(':Description', $data['Description'], PDO::PARAM_STR);
         $req->bindParam(':Image', $data['Image'], PDO::PARAM_STR);
         $req->bindParam(':Actif', $data['Actif'], PDO::PARAM_INT);
+        $req->bindParam(':Immatriculation', $data['Immatriculation'], PDO::PARAM_STR);
 
         $req->execute();
         return $this->bdd->lastInsertId();
@@ -130,6 +131,7 @@ class Vehicule {
                 Description  = :Description,
                 Image        = :Image,
                 Actif        = :Actif
+                Immatriculation = :Immatriculation,
             WHERE ID = :ID
         ");
 
@@ -140,6 +142,7 @@ class Vehicule {
         $req->bindParam(':Description', $data['Description'], PDO::PARAM_STR);
         $req->bindParam(':Image', $data['Image'], PDO::PARAM_STR);
         $req->bindParam(':Actif', $data['Actif'], PDO::PARAM_INT);
+        $req->bindParam(':Immatriculation', $data['Immatriculation'], PDO::PARAM_STR);
         $req->bindParam(':ID', $id, PDO::PARAM_INT);
 
         return $req->execute();
