@@ -59,7 +59,6 @@ class Vente
                 v.NomModele,
                 v.PrixCatalogue,
                 m.Nom AS Marque
-                v.Immatriculation,
             FROM vente ve
             INNER JOIN vehicule v ON ve.ID_Vehicule = v.ID
             INNER JOIN marque m ON v.ID_Marque = m.ID
