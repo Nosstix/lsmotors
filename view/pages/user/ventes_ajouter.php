@@ -55,7 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             'ID_Vehicule' => $idVehicule,
             'NomClient' => $nomClient,
             'DateVente' => $dateVente,
-            'PrixVente' => $prixVente
+            'PrixVente' => $prixVente,
+            'Immatriculation' => $immatriculation
         ]);
 
         if ($id > 0) {
@@ -97,6 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
                     </option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Immatriculation</label>
+                <input type="text" class="form-control" name="immatriculation" required>
             </div>
 
             <div class="mb-3">
