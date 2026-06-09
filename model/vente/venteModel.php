@@ -129,9 +129,9 @@ class Vente
     {
         $req = $this->bdd->prepare("
             INSERT INTO vente 
-                (ID_Employe, ID_Vehicule, NomClient, DateVente, PrixVente, Immatriculation)
+                (ID_Employe, ID_Vehicule, NomClient, DateVente, PrixVente)
             VALUES 
-                (:ID_Employe, :ID_Vehicule, :NomClient, :DateVente, :PrixVente, :Immatriculation)
+                (:ID_Employe, :ID_Vehicule, :NomClient, :DateVente, :PrixVente )
         ");
 
         $req->bindParam(':ID_Employe', $data['ID_Employe'], PDO::PARAM_INT);
@@ -139,7 +139,6 @@ class Vente
         $req->bindParam(':NomClient', $data['NomClient'], PDO::PARAM_STR);
         $req->bindParam(':DateVente', $data['DateVente']);
         $req->bindParam(':PrixVente', $data['PrixVente']);
-        $req->bindParam(':Immatriculation', $data['Immatriculation']);
 
         $req->execute();
         return $this->bdd->lastInsertId();
@@ -154,7 +153,6 @@ class Vente
                 NomClient   = :NomClient,
                 DateVente   = :DateVente,
                 PrixVente   = :PrixVente
-                Immatriculation   = :Immatriculation
             WHERE ID = :ID
         ");
 
@@ -162,7 +160,6 @@ class Vente
         $req->bindParam(':NomClient', $data['NomClient'], PDO::PARAM_STR);
         $req->bindParam(':DateVente', $data['DateVente']);
         $req->bindParam(':PrixVente', $data['PrixVente']);
-        $req->bindParam(':Immatriculation', $data['Immatriculation']);
         $req->bindParam(':ID', $id, PDO::PARAM_INT);
 
         return $req->execute();
