@@ -16,26 +16,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnInscription'])) {
     $pass1 = $_POST['pass1'] ?? '';
     $pass2 = $_POST['pass2'] ?? '';
 
+    // Validation des champs
     if ($nom === '' || $prenom === '' || $discord === '' || $email === '' || $pass1 === '' || $pass2 === '') {
         $erreur = "Tous les champs sont obligatoires.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erreur = "Email invalide.";
     } elseif ($pass1 !== $pass2) {
         $erreur = "Les mots de passe ne correspondent pas.";
     } else {
-        // Bloc: empêcher doublon email
-        $model = new Utilisateur($bdd);
-        if ($model->getByEmail($email)) {
-            $erreur = "Cet email est déjà utilisé.";
+        $erreurRegex = validerMotdePasseRegex($pass1);
+        if (!empty($erreurRegex)) {
+            $erreur = "<strong> mot de passe trop faible : </strong><br>" . implode("<br>", $erreurRegex);
         } else {
-            // Bloc: création joueur
-            utilisateurRegisterJoueur($bdd, [
-                'Nom' => $nom,
-                'Prenom' => $prenom,
-                'Email' => $email,
-                'Passwrd' => $pass1,
-                'DiscordPseudo' => $discord
-            ]);
-
-            $success = "Compte créé. Tu peux te connecter.";
+            $model = new Utilisateur($bdd);
+            if ($model->getByEmail($email)) {
+                $erreur = "un compte avec cet email existe déjà.";
+            } else {
+                utilisateurRegisterJoueur($bdd, [
+                    'Nom' => $nom,
+                    'Prenom' => $prenom,
+                    'DiscordPseudo' => $discord,
+                    'Email' => $email,
+                    'Passwrd' => $pass1
+                ]);
+                $success = "Votre compte a été créé avec succès !";
+            }
         }
     }
 }

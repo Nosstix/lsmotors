@@ -14,11 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnConnexion'])) {
 
     if ($email !== '' && $passwrd !== '') {
 
-        // Appel controller
-        $user = utilisateurLogin($bdd, $email, $passwrd);
+        try {
+            $user = utilisateurLogin($bdd, $email, $passwrd);
 
-        if ($user) {
-            // Bloc: session
             $_SESSION['utilisateur'] = [
                 'ID'            => $user['ID'],
                 'Nom'           => $user['Nom'],
@@ -27,8 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnConnexion'])) {
                 'Role'          => $user['Role'],
                 'DiscordPseudo' => $user['DiscordPseudo'] ?? null,
             ];
-
-            // Bloc: redirection selon rôle
             if ($user['Role'] === 'admin') {
                 header("Location: index.php?page=admin");
             } elseif ($user['Role'] === 'employe') {
@@ -37,9 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnConnexion'])) {
                 header("Location: index.php?page=accueil");
             }
             exit;
-
-        } else {
-            $erreur = "Email ou mot de passe incorrect.";
+        } catch (Exception $e) {
+            $erreur = $e->getMessage();
         }
 
     } else {
@@ -74,3 +69,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btnConnexion'])) {
     <!-- Bloc: lien inscription -->
     <a class="btn btn-outline-light w-100 mt-2" href="index.php?page=inscription">Créer un compte joueur</a>
 </form>
+    
