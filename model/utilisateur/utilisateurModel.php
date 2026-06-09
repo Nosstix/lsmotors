@@ -136,5 +136,26 @@ class Utilisateur
         $req->bindValue(':id', $id, PDO::PARAM_INT);
         return $req->execute();
     }
+
+    public function gererEchecConnexion(int $id, int $tentativesActuelle): void
+    {
+        $nouvellesTentatives = $tentativesActuelle + 1;
+        if ($nouvellesTentatives >= 3) {
+            $dateBlocage = (new DateTime())->modify('+15 seconds')->format('Y-m-d H:i:s');
+
+            $req = $this->bdd->prepare("UPDATE utilisateur SET tentatives_echouees = 3, verrouille_jusqua = :date_fin WHERE ID = :id");
+            $req->execute([':tentatives' => $nouvellesTentatives, ':id' => $id]);
+        
+        } else {
+            $req = $this->bdd->prepare("UPDATE utilisateur SET tentatives_echouees = :tentatives WHERE ID = :id");
+            $req->execute([':tentatives' => $nouvellesTentatives, ':id' => $id]);
+        }
+    }
+
+        public function reinitialiserTentatives(int $id): void
+        {
+            $req = $this->bdd->prepare("UPDATE utilisateur SET tentatives_echouees = 0, verrouille_jusqua = NULL WHERE ID = :id");
+            $req->execute([':id' => $id]);
+        }
 }
 ?>

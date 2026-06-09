@@ -36,6 +36,17 @@ LS MOTORS - Inventaire des fonctionnalités + où c'est dans le code
 - Guards (contrôle d'accès):
   - index.php: functions isLogged(), role(), requireRoles([...])
 
+- create config file
+ -<?php
+
+
+    $users = "user_name_de_la_database";
+    $pass = "mdp_de_la_database";
+    $host = "nom de l'host de la database";
+    $db_name = "ls_motors <- nom de databases";
+
+?>
+
 1) Layout (header/footer) + assets
 ---------------------------------
 - Header:  view/commun/header.php
@@ -81,6 +92,7 @@ LS MOTORS - Inventaire des fonctionnalités + où c'est dans le code
 - Catégories:
   - Vue: view/pages/categories.php
   - Controller: controller/categorie/selectCategorie.php
+   
   - Model: model/categorie/categorieModel.php
 
 - Liste véhicules:

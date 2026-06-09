@@ -5,6 +5,9 @@ USE ls_motors;
 -- =========================
 -- TABLE UTILISATEUR
 -- =========================
+ALTER TABLE utilisateur
+ADD COLUMN tentatives_echouees INT NOT NULL DEFAULT 0,
+ADD COLUMN verrouille_jusqua DATETIME DEFAULT NULL;
 CREATE TABLE utilisateur (
     ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     Nom VARCHAR(50) NOT NULL,
